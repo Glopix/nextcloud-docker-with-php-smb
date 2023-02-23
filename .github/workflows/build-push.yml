@@ -4,11 +4,29 @@ on:
   push:
     branches:
       - 'master'
-  repository_dispatch:
+  schedule:
+    - cron:  '18 22 * * */2'
   workflow_dispatch:
 
 jobs:
-  docker:
+  check:
+    name: check for new release of nextcloud
+    runs-on: ubuntu-latest
+    outputs:
+      needs-updating: ${{ steps.check.outputs.needs-updating }}
+    steps:
+            
+      - name: Check if update available
+        id: check
+        uses: lucacome/docker-image-update-checker@v1
+        with:
+          base-image: library/nextcloud:apache
+          image: glopix/nextcloud-docker-with-php-smb
+
+  build:
+    name: build new docker image
+    needs: check
+    if: needs.check.outputs.needs-updating == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
