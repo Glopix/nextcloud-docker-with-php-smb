@@ -8,4 +8,4 @@ based on https://github.com/nextcloud/docker/tree/master/.examples/dockerfiles/c
 
 <br />
 
-Autobuilds/updates whenever the base Nextcloud image gets an update, thanks to [grandmaster/dockerhub-chainreactor](https://hub.docker.com/r/grandmaster/dockerhub-chainreactor)
+Autobuilds/updates whenever the base Nextcloud image gets an update, thanks to [lucacome/docker-image-update-checker](https://github.com/lucacome/docker-image-update-checker)
