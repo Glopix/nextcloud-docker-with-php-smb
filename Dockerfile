@@ -1,10 +1,10 @@
 FROM nextcloud:apache
 
 # install PHP-SMB-Client
-RUN apt-get update && apt-get install -y libsmbclient-dev --no-install-recommends
-RUN CGO_CFLAGS  := $(shell getconf LFS_CFLAGS)  && \
-    export CGO_CFLAGS  && \
-    pecl install smbclient && docker-php-ext-enable smbclient
+RUN apt-get update && apt-get install -y php-smbclient --no-install-recommends
+#RUN CGO_CFLAGS  := $(shell getconf LFS_CFLAGS)  && \
+#    export CGO_CFLAGS  && \
+#    pecl install smbclient && docker-php-ext-enable smbclient
 
 #install supervisor for cron-jobs
 RUN apt-get install -y supervisor \
