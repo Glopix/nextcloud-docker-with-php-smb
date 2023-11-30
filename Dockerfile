@@ -1,7 +1,7 @@
 FROM nextcloud:apache
 
 # install PHP-SMB-Client
-RUN apt-get update && apt-get install -y smbclient cifs-utils libsmbclient-dev php-dev make --no-install-recommends
+RUN apt-get update && apt-get install smbclient libsmbclient-dev -y --no-install-recommends
 RUN pecl install smbclient
 RUN docker-php-ext-enable smbclient
 
