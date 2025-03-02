@@ -17,9 +17,6 @@ on:
           - "no"
           - "yes"
 
-env:
-  platforms: linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
-
 jobs:
   check:
     name: check for new release of nextcloud
@@ -54,6 +51,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/amd64, linux/arm/v6, linux/arm/v7, linux/arm64/v8, linux/ppc64le, linux/s390x
           push: true
           tags: glopix/nextcloud-docker-with-php-smb:latest
           cache-from: type=registry,ref=glopix/nextcloud-docker-with-php-smb:latest
