@@ -1,4 +1,4 @@
-name: build+push
+name: Build and push images
 
 on:
   push:
@@ -75,7 +75,7 @@ jobs:
     name: save build info
     needs: [check, build]
     runs-on: ubuntu-latest
-    if: needs.build.conclusion == 'success'
+    if: always() && needs.build.conclusion == 'success'
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
       # added or changed files to the repository.
